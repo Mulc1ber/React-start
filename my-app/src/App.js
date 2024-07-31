@@ -24,7 +24,7 @@ export const App = () => {
 
     function onAddButtonClick() {
         if (value !== '') {
-            const updatedList = [...list, { id: Date.now(), value }];
+            const updatedList = [...list, { id: Date.now(), value, data: new Date() }];
             setList(updatedList);
             setValue('');
             setError('');
@@ -62,8 +62,8 @@ export const App = () => {
                 )}
 
                 <ul className={styles['list']}>
-                    {list.map(({ id, value }) => {
-                        const formatterDate = new Date(id).toLocaleString('ru-RU');
+                    {list.map(({ id, value, data }) => {
+                        const formatterDate = data.toLocaleString('ru-RU');
 
                         return (
                             <li className={styles['list-item']} key={id}>
